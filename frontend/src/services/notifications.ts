@@ -7,7 +7,7 @@ Notifications.setNotificationHandler({
     shouldPlaySound: true,
     shouldSetBadge: false,
   }),
-});
+});error 
 
 // Request permissions if not already done (but permissions are handled in permissionService)
 

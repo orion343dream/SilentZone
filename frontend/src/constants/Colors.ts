@@ -1,10 +1,13 @@
 export const Colors = {
-  primary: '#4A90E2',
-  secondary: '#50E3C2',
-  dark: '#333333',
-  light: '#FFFFFF',
-  gray: '#9B9B9B',
+  primary: '#FF8C00', // Orange
+  secondary: '#FFD700', // Gold/Yellow
+  dark: '#000000', // Black
+  light: '#FFFFFF', // White
+  gray: '#666666',
   lightGray: '#F5F5F5',
-  danger: '#D0021B',
-  shadow: 'rgba(0, 0, 0, 0.1)',
+  danger: '#FF4500', // Red-Orange
+  shadow: 'rgba(0, 0, 0, 0.2)',
+  accent: '#FFA500', // Orange accent
+  background: '#FAFAFA', // Light gray background
+  card: '#FFFFFF', // White cards
 };

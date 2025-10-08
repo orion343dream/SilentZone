@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Switch, Alert, Platform } from 'react-native';
+import { View, Text, StyleSheet, Switch, Alert, Platform, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { LogOut } from 'lucide-react-native';
 import { Colors } from '@/constants/Colors';
+import { useAuth } from '@/contexts/AuthContext';
 
 const AUTO_SILENT_KEY = 'auto_silent_android';
 
 export default function SettingsScreen() {
+  const { logout } = useAuth();
   const [autoSilentEnabled, setAutoSilentEnabled] = useState(false);
 
   useEffect(() => {
@@ -34,6 +37,30 @@ export default function SettingsScreen() {
       console.error('Failed to save setting:', error);
       Alert.alert('Error', 'Failed to save setting.');
     }
+  };
+
+  const handleLogout = () => {
+    Alert.alert(
+      'Logout',
+      'Are you sure you want to logout?',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Logout',
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              await logout();
+            } catch (error) {
+              console.error('Failed to logout:', error);
+            }
+          },
+        },
+      ]
+    );
   };
 
   return (
@@ -66,6 +93,11 @@ export default function SettingsScreen() {
           </Text>
         </View>
       )}
+
+      <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+        <LogOut size={20} color={Colors.light} />
+        <Text style={styles.logoutButtonText}>Logout</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -130,5 +162,25 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: Colors.gray,
     lineHeight: 20,
+  },
+  logoutButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.danger,
+    borderRadius: 12,
+    paddingVertical: 16,
+    marginTop: 20,
+    shadowColor: Colors.shadow,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  logoutButtonText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: Colors.light,
+    marginLeft: 8,
   },
 });

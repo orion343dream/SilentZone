@@ -1,7 +1,7 @@
-# Silent Zones Detector
+# SilentZone Pro
 
 ## Overview
-A React Native Expo application with Node.js Express backend for managing location-based silent zones. The app allows users to create geofenced zones where their device should automatically enter silent mode.
+A professional Android mobile application with Node.js Express backend for managing location-based silent zones. The app allows users to create geofenced zones where their device automatically enters silent mode, featuring GPS tracking, background location monitoring, and device vibration control.
 
 ## Project Structure
 ```
@@ -30,7 +30,7 @@ A React Native Expo application with Node.js Express backend for managing locati
 
 ### Ports
 - **Frontend (Expo Web)**: Port 5000
-- **Backend (Express API)**: Port 3001
+- **Backend (Express API)**: Port 3000
 
 ### Backend API Endpoints
 - `GET /api/zones` - Fetch all zones
@@ -41,19 +41,22 @@ A React Native Expo application with Node.js Express backend for managing locati
 
 ### Environment Detection
 The frontend automatically detects the Replit environment and uses the correct backend URL:
-- **Replit**: `https://3001-<replit-domain>/api/zones`
-- **Local**: `http://localhost:3001/api/zones`
+- **Replit**: `https://3000-<replit-domain>/api/zones`
+- **Local**: `http://localhost:3000/api/zones`
 
 ## Platform Support
-- **Mobile**: Full functionality with geofencing, maps, and location services
-- **Web**: Limited functionality - manual zone management via latitude/longitude input (maps not available)
+- **Android Mobile**: Full functionality with GPS tracking, geofencing, background location monitoring, silent mode control, and vibration management
+- **Web**: Limited functionality - zone management only (no GPS tracking or device control)
 
 ## Key Features
-- Create and manage silent zones with custom radius
-- View zones on an interactive map (native platforms)
-- Background geofencing (native platforms)
-- Zone synchronization with backend
-- Cross-platform support (iOS, Android, Web)
+- **GPS Location Tracking**: Continuous background GPS monitoring
+- **Geofencing**: Automatic zone detection and silent mode activation
+- **Device Control**: Silent mode and vibration management
+- **Background Services**: Location monitoring even when app is closed
+- **Zone Management**: Create, edit, and manage multiple silent zones
+- **Real-time Monitoring**: Instant notifications when entering/leaving zones
+- **User Authentication**: Secure login and registration system
+- **Data Synchronization**: Zone data sync across devices
 
 ## Recent Changes (October 2025)
 - Configured for Replit environment
@@ -71,7 +74,7 @@ The frontend automatically detects the Replit environment and uses the correct b
 
 ## Running the Project
 The project automatically starts both workflows:
-1. **Backend**: `cd backend && npm start` (port 3001)
+1. **Backend**: `cd backend && npm start` (port 3000)
 2. **Frontend**: `cd frontend && npm run web` (port 5000)
 
 ## Development Notes

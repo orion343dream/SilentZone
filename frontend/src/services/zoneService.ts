@@ -12,11 +12,11 @@ const getBackendUrl = () => {
       const parts = hostname.split('-');
       if (parts.length > 1) {
         const restOfHostname = parts.slice(1).join('-');
-        return `https://3001-${restOfHostname}/api/zones`;
+        return `https://3000-${restOfHostname}/api/zones`;
       }
     }
   }
-  return 'http://localhost:3001/api/zones';
+  return 'http://localhost:3000/api/zones';
 };
 
 const API_BASE_URL = getBackendUrl();

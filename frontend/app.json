@@ -1,15 +1,16 @@
 {
   "expo": {
-    "name": "Silent Zones Detector",
-    "slug": "silent-zones-detector",
+    "name": "SilentZone Pro",
+    "slug": "silent-zone-pro",
     "version": "1.0.0",
+    "description": "Professional location-based silent zone management for Android devices",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/images/icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FF8C00"
     },
     "ios": {
       "supportsTablet": true,

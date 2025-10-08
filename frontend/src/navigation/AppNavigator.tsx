@@ -7,7 +7,11 @@ import HomeScreen from '@/screens/HomeScreen';
 import ZoneListScreen from '@/screens/ZoneListScreen';
 import SettingsScreen from '@/screens/SettingsScreen';
 import ManageZoneScreen from '@/screens/ManageZoneScreen';
+import SplashScreen from '@/screens/SplashScreen';
+import LoginScreen from '@/screens/LoginScreen';
+import RegisterScreen from '@/screens/RegisterScreen';
 import { Colors } from '@/constants/Colors';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -50,6 +54,25 @@ function HomeTabs() {
 }
 
 export default function AppNavigator() {
+  const { isAuthenticated, isLoading } = useAuth();
+
+  if (isLoading) {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
+      </Stack.Navigator>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
+      </Stack.Navigator>
+    );
+  }
+
   return (
     <Stack.Navigator>
       <Stack.Screen name="Main" component={HomeTabs} options={{ headerShown: false }} />

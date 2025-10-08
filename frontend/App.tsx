@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import * as TaskManager from 'expo-task-manager';
 import * as Location from 'expo-location';
 import AppNavigator from '@/navigation/AppNavigator';
+import { AuthProvider } from '@/contexts/AuthContext';
 import { getGeofencingTaskName, startGeofencingForZones } from '@/services/geofencing';
 import { getZones } from '@/services/zoneService';
 import { sendEntryNotification, sendExitNotification } from '@/services/notifications';
@@ -61,9 +62,11 @@ export default function App() {
   }, []);
 
   return (
-    <NavigationContainer>
-      <AppNavigator />
-      <StatusBar style="auto" />
-    </NavigationContainer>
+    <AuthProvider>
+      <NavigationContainer>
+        <AppNavigator />
+        <StatusBar style="auto" />
+      </NavigationContainer>
+    </AuthProvider>
   );
 }
