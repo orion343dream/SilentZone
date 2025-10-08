@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, TextInput, Alert, Platform } from 'react-native
 import { MapPin, Circle } from 'lucide-react-native';
 import * as Location from 'expo-location';
 import { Colors } from '@/constants/Colors';
+import MapView, { Marker, Circle as MapCircle } from '@/components/MapView';
 
 interface MapPickerProps {
   initialLatitude?: number;
@@ -30,7 +31,6 @@ export default function MapPicker({
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   });
-  const [mapComponents, setMapComponents] = useState<{MapView?: any, Marker?: any, Circle?: any} | null>(null);
 
   useEffect(() => {
     // Center on current location if no initial
@@ -61,17 +61,6 @@ export default function MapPicker({
     }
   }, []);
 
-  useEffect(() => {
-    if (Platform.OS !== 'web') {
-      try {
-        const maps = require('react-native-maps');
-        setMapComponents(maps);
-      } catch (error) {
-        console.warn('Failed to load map components:', error);
-      }
-    }
-  }, []);
-
   const handleMapPress = (event: any) => {
     const { coordinate } = event.nativeEvent;
     setSelectedLocation(coordinate);
@@ -86,32 +75,24 @@ export default function MapPicker({
     }
   };
 
-  if (!mapComponents && Platform.OS !== 'web') {
-    return (
-      <View style={[styles.loadingContainer, { backgroundColor: Colors.primary }]}>
-        <Text style={styles.loadingText}>Loading Map...</Text>
-      </View>
-    );
-  }
-
   return (
     <View style={styles.container}>
-      {mapComponents ? (
-        <mapComponents.MapView
+      {Platform.OS !== 'web' ? (
+        <MapView
           style={styles.map}
           region={mapRegion}
           onRegionChangeComplete={setMapRegion}
           onPress={handleMapPress}
           showsUserLocation
         >
-          <mapComponents.Marker coordinate={selectedLocation} />
-          <mapComponents.Circle
+          <Marker coordinate={selectedLocation} />
+          <MapCircle
             center={selectedLocation}
             radius={radius}
             strokeColor={Colors.primary}
             fillColor="rgba(0, 123, 255, 0.1)"
           />
-        </mapComponents.MapView>
+        </MapView>
       ) : (
         <View style={[styles.webContainerGradient, { backgroundColor: Colors.secondary }]}>
           <View style={styles.webContainer}>

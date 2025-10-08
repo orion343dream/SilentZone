@@ -5,9 +5,19 @@ const app = express();
 let zones = [];
 let zoneIdCounter = 0;
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
 
 app.get('/api/zones', (req, res) => {
   res.json(zones);
@@ -43,6 +53,6 @@ app.get('/', (req, res) => {
   res.json({ message: 'Hello from SilentZone Backend!' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on 0.0.0.0:${PORT}`);
 });

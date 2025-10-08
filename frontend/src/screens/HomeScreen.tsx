@@ -9,6 +9,7 @@ import { requestPermissions } from '@/services/permissionService';
 import { getZones } from '@/services/zoneService';
 import { Zone } from '@/types';
 import { Colors } from '@/constants/Colors';
+import MapView, { Marker, Circle } from '@/components/MapView';
 
 type RootStackParamList = {
   ManageZone: undefined;
@@ -19,8 +20,6 @@ type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'M
 export default function HomeScreen() {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   const [zones, setZones] = useState<Zone[]>([]);
-  const [mapComponents, setMapComponents] = useState<{MapView?: any, Marker?: any, Circle?: any} | null>(null);
-
 
   useEffect(() => {
     const checkPermissions = async () => {
@@ -38,17 +37,6 @@ export default function HomeScreen() {
     }
   }, []);
 
-  useEffect(() => {
-    if (Platform.OS !== 'web') {
-      try {
-        const maps = require('react-native-maps');
-        setMapComponents(maps);
-      } catch (error) {
-        console.warn('Failed to load map components:', error);
-      }
-    }
-  }, []);
-
   const loadZones = useCallback(async () => {
     const storedZones = await getZones();
     setZones(storedZones);
@@ -62,18 +50,10 @@ export default function HomeScreen() {
 
   const activeZones = zones.filter(zone => zone.isActive);
 
-  if (!mapComponents && Platform.OS !== 'web') {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.loadingText}>Loading map...</Text>
-      </View>
-    );
-  }
-
   return (
     <View style={styles.container}>
-      {mapComponents ? (
-        <mapComponents.MapView
+      {Platform.OS !== 'web' ? (
+        <MapView
           style={styles.map}
           initialRegion={{
             latitude: 37.78825,
@@ -85,12 +65,12 @@ export default function HomeScreen() {
         >
           {activeZones.map((zone) => (
             <React.Fragment key={zone.id}>
-              <mapComponents.Marker
+              <Marker
                 coordinate={{ latitude: zone.latitude, longitude: zone.longitude }}
                 title={zone.name}
                 description={`Radius: ${zone.radius}m`}
               />
-              <mapComponents.Circle
+              <Circle
                 center={{ latitude: zone.latitude, longitude: zone.longitude }}
                 radius={zone.radius}
                 strokeColor={Colors.primary}
@@ -98,7 +78,7 @@ export default function HomeScreen() {
               />
             </React.Fragment>
           ))}
-        </mapComponents.MapView>
+        </MapView>
       ) : (
         <View style={styles.webContainer}>
           <Text style={styles.webMessage}>Map is not available on web. Please use the app on mobile devices to view and manage zones.</Text>

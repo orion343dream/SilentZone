@@ -7,7 +7,7 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web",
+    "web": "EXPO_DEVTOOLS_LISTEN_ADDRESS=0.0.0.0 expo start --web --port 5000",
     "lint": "expo lint"
   },
   "dependencies": {
@@ -40,6 +40,7 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "@babel/plugin-transform-template-literals": "^7.27.1",
     "@types/react": "~18.2.45",
     "babel-plugin-module-resolver": "^5.0.2",
     "typescript": "~5.3.3"

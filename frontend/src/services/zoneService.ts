@@ -2,7 +2,24 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Zone } from '@/types';
 
 const ZONES_KEY = 'silent_zones';
-const API_BASE_URL = 'http://localhost:3000/api/zones';
+
+const getBackendUrl = () => {
+  if (typeof window !== 'undefined') {
+    const hostname = window.location.hostname;
+    const isReplit = hostname.includes('replit.dev') || hostname.includes('replit.app') || hostname.includes('repl.co');
+    
+    if (isReplit) {
+      const parts = hostname.split('-');
+      if (parts.length > 1) {
+        const restOfHostname = parts.slice(1).join('-');
+        return `https://3001-${restOfHostname}/api/zones`;
+      }
+    }
+  }
+  return 'http://localhost:3001/api/zones';
+};
+
+const API_BASE_URL = getBackendUrl();
 
 export const getZones = async (): Promise<Zone[]> => {
   try {
