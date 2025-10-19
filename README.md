@@ -1,132 +1,213 @@
+
+```markdown
 <!-- HEADER -->
-<h1 align="center">👋 Hi, I'm <span style="color:#0078FF;">Orion Sandaru</span></h1>
-<h3 align="center">🚀 Full-Stack | React Native | Web & Mobile Developer</h3>
+<h1 align="center">💤 SilentZone – Smart Auto-Silent Location App</h1>
 
 <p align="center">
-  <a href="https://github.com/orion343dream">
-    <img src="https://komarev.com/ghpvc/?username=orion343dream&label=Profile%20Views&color=blueviolet&style=flat" alt="profile views" />
+  🕊️ Automatically silence your phone in peaceful zones like libraries, schools, temples, and churches.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React%20Native-0.75+-blue?logo=react" />
+  <img src="https://img.shields.io/badge/Expo-51+-black?logo=expo" />
+  <img src="https://img.shields.io/badge/TailwindCSS-NativeWind-blue?logo=tailwindcss" />
+  <img src="https://img.shields.io/badge/License-MIT-green.svg" />
+  <img src="https://img.shields.io/badge/Platform-Android%20|%20iOS-lightgrey" />
+  <img src="https://img.shields.io/badge/Build-Passing-brightgreen" />
+</p>
+
+---
+
+## 🌐 Overview
+**SilentZone** is a React Native app that intelligently detects your location and automatically switches your device to **Silent or Vibrate Mode** when you enter predefined “Silent Zones” (like libraries, schools, temples, or your own custom zones).  
+It checks your location every minute and restores sound when you leave the zone.  
+
+---
+
+## 🎯 Key Features
+
+| 🔢 | Feature | Description |
+|----|----------|--------------|
+| 🧭 | **Auto Zone Detection** | Detects quiet zones using network-based location and Google Maps tags. |
+| 📍 | **Custom Zones** | Add or manage your own silent or vibrate areas manually. |
+| 🔕 | **Auto Silent Mode** | Automatically toggles Do Not Disturb (DND) mode when entering a zone. |
+| 🗺️ | **Live Map Integration** | View nearby or saved silent zones on Google Maps. |
+| 🕒 | **Background Location Checking** | Continuously monitors location every minute. |
+| 🔔 | **Notifications & History** | Displays logs of zone entry/exit events. |
+| ⚙️ | **Advanced Settings** | Customize sound mode, interval checks, and DND permissions. |
+| 📘 | **Help & Guide** | Quick help, FAQs, and app usage instructions. |
+
+---
+
+## 🧩 Tech Stack
+
+| Layer | Technologies |
+|--------|----------------|
+| 💻 **Frontend** | React Native (Expo), TypeScript, Tailwind CSS (NativeWind) |
+| 🗺️ **Maps** | Google Maps API, react-native-maps |
+| 📡 **Location Services** | Expo Location, Geofencing APIs |
+| 🔕 **System Access** | Android DND Mode, Background Services |
+| 💾 **Storage** | AsyncStorage |
+| ⚛️ **State Management** | Context API / Zustand |
+| 🧰 **Utilities** | Expo Permissions, React Navigation, Expo Notifications |
+
+---
+
+## 🖥️ User Interface Overview
+
+### 🏠 Home Screen
+- Real-time status of device mode  
+- Quick toggle for SilentZone  
+- Live location summary  
+- Hamburger menu access  
+
+### 🗺️ Maps Screen
+- Interactive map view  
+- Silent zone markers (auto & manual)  
+- Add/remove custom zones  
+
+### 📍 Zones Screen
+- List view of saved zones  
+- Zone cards showing type, radius, and trigger time  
+- Edit or delete zone options  
+
+### 🔔 Notifications / History
+- Log of all silent activations  
+- Icons showing type of zone entered/exited  
+- Timestamp of each event  
+
+### ⚙️ Settings Screen
+- Location check interval  
+- Mode preferences (Silent/Vibrate)  
+- Theme toggle  
+- Permission management  
+
+### ❓ Help Screen
+- User guide and FAQs  
+- Support and contact links  
+- About section  
+
+---
+
+## 🧭 Project Structure
+
+```
+
+SilentZone/
+├── assets/               # App icons, images
+├── components/           # Reusable UI components
+├── screens/              # App screens (Home, Maps, Zones, etc.)
+├── navigation/           # Stack & Drawer navigation
+├── context/              # Global app context
+├── utils/                # Helper functions (location, permissions)
+├── hooks/                # Custom React hooks
+├── App.tsx               # Entry point
+└── tailwind.config.js    # Tailwind setup
+
+````
+
+---
+
+## 🚀 Getting Started
+
+### 🧱 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/your-username/SilentZone.git
+cd SilentZone
+````
+
+### ⚙️ 2️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+### ▶️ 3️⃣ Start the App
+
+```bash
+npx expo start
+```
+
+### 🔑 4️⃣ Configure Google Maps
+
+Create a `.env` file and add:
+
+```bash
+GOOGLE_MAPS_API_KEY=your_key_here
+```
+
+---
+
+## 🧾 Permissions Required
+
+* 📍 Location (Foreground + Background)
+* 🔕 Do Not Disturb Access
+* 🌐 Network Access
+* 🗺️ Google Maps API
+
+---
+
+## 🧰 Build Commands
+
+| Platform   | Command                |
+| ---------- | ---------------------- |
+| 📱 Android | `npx expo run:android` |
+| 🍏 iOS     | `npx expo run:ios`     |
+| 🌍 Web     | `npx expo start --web` |
+
+---
+
+## 🧑‍💻 Developer
+
+**👤 Orion Sandaru (Orion343Dream)**
+🔗 [GitHub Profile](https://github.com/orion343dream)
+💬 Passionate about intelligent automation and seamless UX systems.
+
+---
+
+## 🧡 Support the Project
+
+<p align="center">
+  <a href="https://github.com/your-username/SilentZone" target="_blank">
+    <img src="https://img.shields.io/badge/⭐️-Star%20the%20Repo-blue?style=for-the-badge" />
   </a>
-  <a href="mailto:orion343dream@gmail.com">
-    <img src="https://img.shields.io/badge/Email-Contact%20Me-red?style=flat&logo=gmail" />
+  <a href="#-getting-started" target="_blank">
+    <img src="https://img.shields.io/badge/⚙️-Get%20Started-green?style=for-the-badge" />
   </a>
-  <a href="https://www.linkedin.com/in/orion343dream">
-    <img src="https://img.shields.io/badge/LinkedIn-Connect%20with%20me-blue?logo=linkedin" />
+  <a href="#-tech-stack" target="_blank">
+    <img src="https://img.shields.io/badge/🧩-Tech%20Stack-purple?style=for-the-badge" />
   </a>
-  <a href="https://orion343dream.github.io/portfolio">
-    <img src="https://img.shields.io/badge/🌐%20Portfolio-Visit%20Now-00C853?style=flat&logo=googlechrome" />
+  <a href="#-user-interface-overview" target="_blank">
+    <img src="https://img.shields.io/badge/📱-UI%20Screens-orange?style=for-the-badge" />
   </a>
 </p>
 
 ---
 
-## 🧠 **About Me**
+## 📜 License
 
-💡 Passionate about building smart, scalable apps with **modern design principles** and seamless UX.  
-🎯 Focused on React Native, MERN stack, and cloud integration.  
-🌱 Currently exploring **AI-driven mobile automation** and advanced backend optimization.  
-⚙️ Constantly learning new technologies to enhance performance and design.
+This project is licensed under the **MIT License**.
+You are free to use, modify, and distribute with proper attribution.
 
 ---
 
-## 🧩 **Tech Stack & Tools**
+## 🖼️ App Preview
+
+> *(Add screenshots for visual appeal)*
+
+```
+📸 assets/screenshots/splash.png  
+📸 assets/screenshots/home.png  
+📸 assets/screenshots/map.png
+```
+
+---
 
 <p align="center">
-  <!-- Languages -->
-  <img src="https://skillicons.dev/icons?i=js,ts,html,css,react,nextjs,nodejs,express,php,mongodb,mysql,python,java&theme=dark" /><br/>
-  <!-- Tools -->
-  <img src="https://skillicons.dev/icons?i=git,github,androidstudio,visualstudio,vscode,figma,postman,tailwind,firebase,aws,docker&theme=dark" />
+  <a href="https://github.com/your-username/SilentZone" target="_blank">
+    <img src="https://img.shields.io/badge/💤_View_on_GitHub-Click%20Here-black?style=for-the-badge&logo=github" />
+  </a>
 </p>
+```
 
----
-
-## 📱 **Highlighted Projects**
-
-### 🛰️ [SilentZone – Smart Auto-Silent App](https://github.com/orion343dream/SilentZone)
-> 🚦 A React Native mobile app that automatically switches to silent/vibrate mode based on your location.  
-> 🔍 Features:
-> - Smart location detection using Google Maps API  
-> - Custom silent zones  
-> - Background location service with 1-min refresh  
-> - Auto restore sound when leaving zone  
-
-**Tech Stack:** React Native · Tailwind CSS · Expo · Firebase · Node.js  
-**Status:** 🚧 In Development  
-
-[![GitHub Repo stars](https://img.shields.io/github/stars/orion343dream/SilentZone?style=social)](https://github.com/orion343dream/SilentZone)
-[![GitHub last commit](https://img.shields.io/github/last-commit/orion343dream/SilentZone?color=green)](https://github.com/orion343dream/SilentZone)
-
----
-
-### 🌐 [IdeaStream – Blogging Platform](https://github.com/orion343dream/IdeaStream-Blogging-Platform-with-React-PHP-API-MongoDB)
-> 💡 A modern content-sharing platform with real-time features, clean UI, and secure APIs.  
-> 🧠 Built using React + PHP + MongoDB.
-
----
-
-### 💼 [Strategic Growth Analysis (Data Project)](https://github.com/orion343dream/Strategic-Growth-Analysis)
-> 📊 Analytical dashboard for retail insights — combining Python, Power BI, and predictive analytics.
-
----
-
-## 📊 **GitHub Stats**
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=orion343dream&show_icons=true&theme=tokyonight&hide_border=true" width="48%" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=orion343dream&theme=tokyonight&hide_border=true" width="48%" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=orion343dream&layout=compact&theme=tokyonight&hide_border=true" width="48%" />
-</p>
-
----
-
-## 🎨 **UI & Design Tools**
-
-| Category | Tools |
-|-----------|--------|
-| 🎨 Design | Figma · Adobe XD · Canva |
-| 💻 Frontend | React · React Native · Tailwind CSS |
-| ⚙️ Backend | Node.js · Express · PHP · Firebase |
-| ☁️ Cloud | AWS · Vercel · Firebase · Render |
-| 🧭 Database | MongoDB · MySQL · SQLite |
-
----
-
-## 🧰 **Developer Utilities**
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Code%20Editor-VS%20Code-007ACC?logo=visualstudiocode&logoColor=white" />
-  <img src="https://img.shields.io/badge/Version%20Control-Git-orange?logo=git" />
-  <img src="https://img.shields.io/badge/Design-Figma-purple?logo=figma" />
-  <img src="https://img.shields.io/badge/Hosting-Vercel-black?logo=vercel" />
-  <img src="https://img.shields.io/badge/CI/CD-GitHub%20Actions-blue?logo=githubactions" />
-</p>
-
----
-
-## 🧩 **Contribution Graph**
-
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=orion343dream&theme=tokyo-night" />
-</p>
-
----
-
-## 💬 **Connect With Me**
-
-<p align="center">
-  <a href="https://www.linkedin.com/in/orion343dream"><img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin"/></a>
-  <a href="mailto:orion343dream@gmail.com"><img src="https://img.shields.io/badge/Gmail-red?style=for-the-badge&logo=gmail"/></a>
-  <a href="https://twitter.com/orion343dream"><img src="https://img.shields.io/badge/Twitter-black?style=for-the-badge&logo=x"/></a>
-  <a href="https://github.com/orion343dream"><img src="https://img.shields.io/badge/GitHub-gray?style=for-the-badge&logo=github"/></a>
-</p>
-
----
-
-## ⚡ **Fun Fact**
-> 💬 “Silence isn’t empty — it’s full of answers.”  
-> This philosophy inspired **SilentZone** — the fusion of calm and technology.
-
----
-
+Would you like me to generate this as a **ready-to-upload `README.md` file** (with Markdown formatting preserved and all badges active)?
