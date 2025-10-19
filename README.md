@@ -1,6 +1,4 @@
 
-```markdown
-<!-- HEADER -->
 <h1 align="center">💤 SilentZone – Smart Auto-Silent Location App</h1>
 
 <p align="center">
