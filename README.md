@@ -206,6 +206,3 @@ You are free to use, modify, and distribute with proper attribution.
     <img src="https://img.shields.io/badge/💤_View_on_GitHub-Click%20Here-black?style=for-the-badge&logo=github" />
   </a>
 </p>
-```
-
-Would you like me to generate this as a **ready-to-upload `README.md` file** (with Markdown formatting preserved and all badges active)?
